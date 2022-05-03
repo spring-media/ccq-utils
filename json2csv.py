@@ -2,7 +2,7 @@
 import json, csv, sys
 
 if len(sys.argv) != 3:
-    print("ERROR: Need more arguments")
+    print("ERROR: Need 2 arguments")
     print("Usage: ./json2csv.py <input json file> <output csv filename>")
 
 json_file_path = sys.argv[1]
