@@ -8,22 +8,17 @@ policies:
         type: value
         value: default
       - or:
-        - type: ingress
-          IpProtocol: "-1"
-          Cidr: "0.0.0.0/0"
-        - type: ingress
-          IpProtocol: "-1"
-          CidrV6: "::/0"
-        - type: ingress
-          SelfReference: True
-        - type: egress
-          Cidr: "0.0.0.0/0"
+        - type: value
+          key: IpPermissions
+          value: not-null
+        - type: value
+          key: IpPermissionsEgress
+          value: not-null
     actions:
-      - type: set-permissions
-        # remove the permission matched by a previous ingress filter.
-        remove-ingress: matched
-        # remove the permission matched by a previous egress filter.
-        remove-egress: matched
+      - type: remove-permissions
+        ingress: all
+      - type: remove-permissions
+        egress: all
       - type: tag
         # tag the security group
         tags: 
