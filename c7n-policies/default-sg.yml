@@ -1,0 +1,30 @@
+policies: 
+  - name: security-group-default
+    resource: security-group
+    filters: 
+      - 
+        key: GroupName
+        op: eq
+        type: value
+        value: default
+      - or:
+        - type: ingress
+          IpProtocol: "-1"
+          Cidr: "0.0.0.0/0"
+        - type: ingress
+          IpProtocol: "-1"
+          CidrV6: "::/0"
+        - type: ingress
+          SelfReference: True
+        - type: egress
+          Cidr: "0.0.0.0/0"
+    actions:
+      - type: set-permissions
+        # remove the permission matched by a previous ingress filter.
+        remove-ingress: matched
+        # remove the permission matched by a previous egress filter.
+        remove-egress: matched
+      - type: tag
+        # tag the security group
+        tags: 
+          Name: "DO NOT USE. DO NOT ADD RULES"
