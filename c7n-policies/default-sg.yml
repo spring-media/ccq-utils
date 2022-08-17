@@ -23,3 +23,13 @@ policies:
         # tag the security group
         tags: 
           Name: "DO NOT USE. DO NOT ADD RULES"
+      - type: notify
+        template: default
+        template_format: 'html'
+        priority_header: '2'
+        subject: "Default Security Group detected and fixed [Account {{ account }} - {{ region }}]"
+        to:
+        - laur.telliskivi@protonmail.com
+        transport:
+          type: sqs
+          queue: https://sqs.eu-west-1.amazonaws.com/426960430683/c7n-mailer

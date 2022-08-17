@@ -11,7 +11,7 @@ json_file_path = sys.argv[1]
 with open(json_file_path) as data:
     data = json.load(data)
 
-with open('data2.csv','w') as file:
+with open(sys.argv[2],'w') as file:
     csv_writer = csv.writer(file)
     count = 0
     for d in data:
