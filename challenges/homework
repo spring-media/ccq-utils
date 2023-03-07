@@ -1,0 +1,17 @@
+Your task is to create a plan of action to secure the DVNA application by implementing security controls and best practices 
+that will mitigate or eliminate all the vulnerabilities present in the application. The application is hosted on Github, and you can access it using the 
+following link: https://github.com/wo1f1ow/dvna
+You should provide a detailed plan of action on how you would secure the application and fix all the issues.
+
+Please keep in mind that we are looking for a complete and practical solution that can be applied to any application. 
+Your plan of action should include:
+
+- Identification of vulnerabilities present in the DVNA application.
+- Prioritization of the vulnerabilities based on severity.
+- Security controls and best practices to mitigate or eliminate the identified vulnerabilities.
+- Any additional recommendations for improving the overall security of the application.
+
+Please be ready to talk about your solution during the next interview, outlining each step of the process (bonus points if you have any supporting 
+documentation, such as diagrams or code snippets).
+
+We look forward to reviewing your plan of action and evaluating your technical skills and knowledge of securing the vulnerable application.
