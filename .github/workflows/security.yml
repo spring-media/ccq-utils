@@ -1,5 +1,20 @@
 name: Leaked Secrets Scan
-on: [pull_request, push]
+
+on:
+  workflow_call:
+
 jobs:
-  security:
-    uses: spring-media/ccq-utils/.github/workflows/security.yml@main
+  TruffleHog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Entire Git history of the repository will be fetched
+      - name: TruffleHog OSS
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }} # Start scanning from default main branch
+          head: HEAD # Scan commits until here (usually dev branch).
+          extra_args: --debug --only-verified # Check only for verified secrets
