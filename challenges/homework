@@ -1,7 +1,0 @@
-Imagine that you are assigned to work with a dev team to level up their security. They have this legacy and most 
-likely vulnerable application that needs to be secured. The teams are very agile and do continuous deployment.
-The application can be found here: https://github.com/wo1f1ow/dvna
-
-1. How would you secure the application and implement security controls so that it would be safe to deploy to the public/production environment? 
-Feel free to clone or fork the repository (to implement any security controls on it) and be ready to discuss your implemented solution with us.
-2. What kind of vulnerabilities do you see in the repository? Given the limited resources in the dev team, how should team proceed?
