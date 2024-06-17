@@ -27,4 +27,4 @@ jobs:
       env:
         GIT_API_KEY: ${{ secrets.GIT_API_KEY }}
         SNYK_API_KEY: ${{ secrets.SNYK_API_KEY }}
-      run: python snyk-import.py
+      run: python snyk-integration.py
