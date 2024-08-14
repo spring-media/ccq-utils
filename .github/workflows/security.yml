@@ -12,6 +12,6 @@ jobs:
         with:
           fetch-depth: 0 # Entire Git history of the repository will be fetched
       - name: TruffleHog OSS
-        uses: trufflesecurity/trufflehog@v3.9.0
+        uses: trufflesecurity/trufflehog@v3.81.8
         with:
           extra_args: --debug --only-verified # Check only for verified secrets
