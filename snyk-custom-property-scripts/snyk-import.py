@@ -16,8 +16,12 @@ snyk_headers = {'Authorization': f'token {snyk_api_key}', 'Content-Type': 'appli
 
 # Snyk Org Mapping
 def load_org_mapping():
-    with open('org_mapping.json') as file:
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(script_dir, 'org_mapping.json')
+    
+    with open(file_path) as file:
         return json.load(file)
+
 org_mapping = load_org_mapping()
 
 def fetch_all_snyk_targets(org_id, headers):
