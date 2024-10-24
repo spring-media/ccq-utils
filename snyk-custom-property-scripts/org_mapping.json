@@ -21,12 +21,16 @@
     "MDS": {"org_id": "3ff7b8bd-6168-4b3d-9a43-a1fc46028530", "integration_id": "65e6e15e-5be1-4ccb-ba22-5135ef1dc821"},
     "Privacy Products": {"org_id": "f6a62e82-a8d3-4ccd-a099-7ac5ea4e21be", "integration_id": "9a898c1a-e4c3-4608-b7c0-44978c3800e1"},
     "PS Account": {"org_id": "e035e0f5-a1b4-4de2-a591-8b5a4d75dda2", "integration_id": "d776b684-89f9-4fb0-b2c8-3b5e7fb27a57"},
-    "Ps Plus": {"org_id": "ab823a56-a868-4c59-bdfd-555d71155955", "integration_id": "b329c6de-e2d2-4be3-a4d3-2501d5e76df3"},
+    "PS Plus": {"org_id": "ab823a56-a868-4c59-bdfd-555d71155955", "integration_id": "b329c6de-e2d2-4be3-a4d3-2501d5e76df3"},
     "Team AI": {"org_id": "e56413e3-3c14-4fac-90ba-a52e0a767f49", "integration_id": "dd1d78a3-7cf9-4095-9f2d-d6fcb30d52d9"},
     "Team Rochen": {"org_id": "af41a14b-381b-4e79-94d8-a5fc1250bab1", "integration_id": "10f71918-dab5-4012-a5e8-8051d7f29b05"},
     "Team T-Rex": {"org_id": "53b00795-3f18-4a7f-8fc3-c97b1308d3d1", "integration_id": "6a0edd67-432e-4c19-8a16-d6f414df21b9"},
     "Welt Apps": {"org_id": "5da14062-84d7-4b8e-84d4-a3c6830c523c", "integration_id": "747a8ab5-de89-4b84-928c-9b9a3d8af437"},
     "Welt Web": {"org_id": "48fce1b7-3676-4c51-8344-f008aeac1364", "integration_id": "8d310015-e80e-49da-8b80-c1bd7b269c68"},
     "Immersive Media": {"org_id": "3514cab1-83b3-4bf9-a46b-0e45d17c4fd5", "integration_id": "405d6972-146a-4754-a060-f33e58ffb372"},
-    "Apps Edition (extern)": {"org_id": "827a983a-4a8c-486e-956a-3c2ba75fb598", "integration_id": "60cb72e8-a627-4eff-bd02-67e046275c1f"}
+    "Apps Edition (extern)": {"org_id": "827a983a-4a8c-486e-956a-3c2ba75fb598", "integration_id": "60cb72e8-a627-4eff-bd02-67e046275c1f"},
+    "Q-Team": {"org_id": "ae8995ba-6061-4685-abae-d3ad414fd280", "integration_id": "f01e052f-5408-42c1-87b8-a2755fa4afa3"},
+    "CIS (Cloud Infrastructure Services)": {"org_id": "8e4e22dd-e273-4072-996b-208abfccdb22", "integration_id": "e2453944-a3b8-4c24-bb26-9b6d843f961a"},
+    "OTT - Core Team": {"org_id": "133effc0-1c8c-47a4-9483-78ca852b12af", "integration_id": "364373f2-fcf7-456e-80c8-024bbfc35fc5"},
+    "OTT Video Team": {"org_id": "032137db-8cb5-418c-99de-5c1036ca95ca", "integration_id": "e133c0d2-a127-4306-a4a3-d242cdfb7832"}
 }
