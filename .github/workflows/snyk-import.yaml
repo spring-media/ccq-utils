@@ -1,4 +1,4 @@
-name: Snyk Repository Import
+name: Snyk Repository Import and Cleanup
 
 on:
   schedule:
@@ -27,3 +27,9 @@ jobs:
         GIT_API_KEY: ${{ secrets.GIT_API_KEY }}
         SNYK_API_KEY: ${{ secrets.SNYK_API_KEY }}
       run: python snyk-custom-property-scripts/snyk-import.py
+
+    - name: Remove Archived Repositories from Snyk
+      env:
+        GIT_API_KEY: ${{ secrets.GIT_API_KEY }}
+        SNYK_API_KEY: ${{ secrets.SNYK_API_KEY }}
+      run: python snyk-custom-property-scripts/remove_archived_repos_snyk.py
