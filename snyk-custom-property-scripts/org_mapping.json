@@ -12,6 +12,7 @@
     "Advertising Intelligence": {"org_id": "49204e2f-2c89-4f17-861c-7f0c8ecd8049", "integration_id": "2f65beab-825e-472f-81a5-64854cf9deda"},
     "Auto Curation": {"org_id": "00e3b6e2-167d-43c5-b12f-58537fae166b", "integration_id": "015f74af-dc9e-44ec-88bd-f8846c033ba8"},
     "Data Platform": {"org_id": "2a8e2a8e-bb44-4c4d-bd41-8182a4b7d08d", "integration_id": "b45718df-590a-4a4c-9009-7dcb1a33d742"},
+    "Data Infrastructure": {"org_id": "db7dcd85-9820-421f-9138-5f705cc03c89", "integration_id": "8857ac43-dd8e-4dd5-a33e-4f6fd479c52a"},
     "Tracking": {"org_id": "2bd2b75f-4a37-4469-ac49-9e870c88fb36", "integration_id": "64cc9077-e1f6-456d-afcb-edbebe36035a"},
     "Customer Intelligence": {"org_id": "2a85df5e-dad8-42a0-80b9-7d9b7099be0e", "integration_id": "8aba9157-03b3-4f27-9e63-f02417e3d3c3"},
     "Ad Technology": {"org_id": "4e3c539f-9b13-47c6-880b-2e70364ffa52", "integration_id": "9f4e25e0-4cbe-4a82-b482-3f787e3b83c1"},
