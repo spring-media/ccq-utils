@@ -11,7 +11,7 @@
           default: "docker-tag"
         POLICY_IMAGE:
           type: string
-          default: "Default vulnerabilities policy"n
+          default: "Default vulnerabilities policy"
         POLICY_IAC:
           type: string
           default: "Default IaC policy"
