@@ -1,0 +1,61 @@
+  name: Wiz CLI Scans
+
+  on:
+    workflow_call:
+      inputs:
+        SCAN_PATH:
+          type: string
+          default: "."
+        TAG:
+          type: string
+          default: "docker-tag"
+        POLICY_IMAGE:
+          type: string
+          default: "Default vulnerabilities policy"
+        POLICY_IAC:
+          type: string
+          default: "Default IaC policy"
+      secrets:
+        WIZ_CLIENT_ID:
+          required: true
+        WIZ_CLIENT_SECRET:
+          required: true
+
+  jobs:
+    wiz-cli-image-scan:
+      name: 'Wiz-cli Image Scan'
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check out repository
+          uses: actions/checkout@v4
+
+        - name: Build the Docker image
+          run: cd ${{ inputs.SCAN_PATH }} && docker build . --tag ${{ inputs.TAG }}
+
+        - name: Download Wiz CLI
+          run: curl -o wizcli https://downloads.wiz.io/wizcli/latest/wizcli-linux-amd64 && chmod +x wizcli
+
+        - name: Authenticate to Wiz
+          run: ./wizcli auth --id "${{ secrets.WIZ_CLIENT_ID }}" --secret "${{ secrets.WIZ_CLIENT_SECRET }}"
+
+        - name: Run wiz-cli docker image scan
+          run: ./wizcli docker scan --image ${{ inputs.TAG }} --policy "${{ inputs.POLICY_IMAGE }}"
+
+        - name: Fetch digest of Docker image for Graph enrichment
+          run: ./wizcli docker tag --image ${{ inputs.TAG }}
+
+    wiz-cli-iac-scan:
+      name: 'Wiz-cli IaC Scan'
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check out repository
+          uses: actions/checkout@v4
+
+        - name: Download Wiz CLI
+          run: curl -o wizcli https://downloads.wiz.io/wizcli/latest/wizcli-linux-amd64 && chmod +x wizcli
+
+        - name: Authenticate to Wiz
+          run: ./wizcli auth --id "${{ secrets.WIZ_CLIENT_ID }}" --secret "${{ secrets.WIZ_CLIENT_SECRET }}"
+
+        - name: Run wiz CLI IaC scan
+          run: ./wizcli iac scan --path ${{ inputs.SCAN_PATH }} --policy "${{ inputs.POLICY_IAC }}"
