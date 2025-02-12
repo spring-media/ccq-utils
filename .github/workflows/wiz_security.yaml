@@ -57,8 +57,7 @@ jobs:
       - name: Run wiz-cli docker image scan
         if: steps.check_dockerfile.outputs.exists == 'true'
         continue-on-error: true
-        run: |
-          ./wizcli docker scan --image ${{ inputs.TAG }} --policy "${{ inputs.POLICY_IMAGE }}"
+        run: ./wizcli docker scan --image ${{ inputs.TAG }} --policy "${{ inputs.POLICY_IMAGE }}"
 
       - name: Fetch digest of Docker image for Graph enrichment
         if: steps.check_dockerfile.outputs.exists == 'true'
@@ -80,5 +79,4 @@ jobs:
       - name: Run Wiz CLI IaC Scan
         if: steps.check_iac_files.outputs.exists == 'true'
         continue-on-error: true
-        run: |
-          ./wizcli iac scan --path ${{ inputs.SCAN_PATH }} --policy "${{ inputs.POLICY_IAC }}"
+        run: ./wizcli iac scan --path ${{ inputs.SCAN_PATH }} --policy "${{ inputs.POLICY_IAC }}"
