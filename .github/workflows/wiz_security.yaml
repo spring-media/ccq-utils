@@ -1,61 +1,84 @@
-  name: Wiz CLI Scans
+name: Wiz CLI Scans
 
-  on:
-    workflow_call:
-      inputs:
-        SCAN_PATH:
-          type: string
-          default: "."
-        TAG:
-          type: string
-          default: "docker-tag"
-        POLICY_IMAGE:
-          type: string
-          default: "Default vulnerabilities policy"
-        POLICY_IAC:
-          type: string
-          default: "Default IaC policy"
-      secrets:
-        WIZ_CLIENT_ID:
-          required: true
-        WIZ_CLIENT_SECRET:
-          required: true
+on:
+  workflow_call:
+    inputs:
+      SCAN_PATH:
+        type: string
+        default: "."
+      TAG:
+        type: string
+        default: ""
+      POLICY_IMAGE:
+        type: string
+        default: "Default vulnerabilities policy"
+      POLICY_IAC:
+        type: string
+        default: "Default IaC policy"
+    secrets:
+      WIZ_CLIENT_ID:
+        required: true
+      WIZ_CLIENT_SECRET:
+        required: true
 
-  jobs:
-    wiz-cli-image-scan:
-      name: 'Wiz-cli Image Scan'
-      runs-on: ubuntu-latest
-      steps:
-        - name: Check out repository
-          uses: actions/checkout@v4
+jobs:
+  wiz-cli-setup:
+    name: "Setup Wiz CLI"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-        - name: Build the Docker image
-          run: cd ${{ inputs.SCAN_PATH }} && docker build . --tag ${{ inputs.TAG }}
+      - name: Download Wiz CLI
+        run: curl -o wizcli https://downloads.wiz.io/wizcli/latest/wizcli-linux-amd64 && chmod +x wizcli
 
-        - name: Download Wiz CLI
-          run: curl -o wizcli https://downloads.wiz.io/wizcli/latest/wizcli-linux-amd64 && chmod +x wizcli
+      - name: Authenticate to Wiz
+        run: ./wizcli auth --id "${{ secrets.WIZ_CLIENT_ID }}" --secret "${{ secrets.WIZ_CLIENT_SECRET }}"
 
-        - name: Authenticate to Wiz
-          run: ./wizcli auth --id "${{ secrets.WIZ_CLIENT_ID }}" --secret "${{ secrets.WIZ_CLIENT_SECRET }}"
+  wiz-cli-image-scan:
+    name: "Wiz CLI Image Scan"
+    needs: wiz-cli-setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-        - name: Run wiz-cli docker image scan
-          run: ./wizcli docker scan --image ${{ inputs.TAG }} --policy "${{ inputs.POLICY_IMAGE }}"
+      - name: Check for Dockerfile
+        id: check_dockerfile
+        run: |
+          [ -f "${{ inputs.SCAN_PATH }}/Dockerfile" ] && echo "::set-output name=exists::true" || echo "::set-output name=exists::false"
 
-        - name: Fetch digest of Docker image for Graph enrichment
-          run: ./wizcli docker tag --image ${{ inputs.TAG }}
+      - name: Build the Docker image
+        if: steps.check_dockerfile.outputs.exists == 'true'
+        run: |
+          cd ${{ inputs.SCAN_PATH }}
+          docker build . --tag ${{ inputs.TAG }}
 
-    wiz-cli-iac-scan:
-      name: 'Wiz-cli IaC Scan'
-      runs-on: ubuntu-latest
-      steps:
-        - name: Check out repository
-          uses: actions/checkout@v4
+      - name: Run wiz-cli docker image scan
+        if: steps.check_dockerfile.outputs.exists == 'true'
+        continue-on-error: true
+        run: |
+          ./wizcli docker scan --image ${{ inputs.TAG }} --policy "${{ inputs.POLICY_IMAGE }}"
 
-        - name: Download Wiz CLI
-          run: curl -o wizcli https://downloads.wiz.io/wizcli/latest/wizcli-linux-amd64 && chmod +x wizcli
+      - name: Fetch digest of Docker image for Graph enrichment
+        if: steps.check_dockerfile.outputs.exists == 'true'
+        run: ./wizcli docker tag --image ${{ inputs.TAG }}
 
-        - name: Authenticate to Wiz
-          run: ./wizcli auth --id "${{ secrets.WIZ_CLIENT_ID }}" --secret "${{ secrets.WIZ_CLIENT_SECRET }}"
+  wiz-cli-iac-scan:
+    name: "Wiz CLI IaC Scan"
+    needs: wiz-cli-setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-        - name: Run wiz CLI IaC scan
-          run: ./wizcli iac scan --path ${{ inputs.SCAN_PATH }} --policy "${{ inputs.POLICY_IAC }}"
+      - name: Check for IaC Files
+        id: check_iac_files
+        run: |
+          find ${{ inputs.SCAN_PATH }} -type f \( -name "*.tf" -o -name "*.yml" -o -name "*.yaml" -o -name "*.json" \) | grep -q . && echo "::set-output name=exists::true" || echo "::set-output name=exists::false"
+
+      - name: Run Wiz CLI IaC Scan
+        if: steps.check_iac_files.outputs.exists == 'true'
+        continue-on-error: true
+        run: |
+          ./wizcli iac scan --path ${{ inputs.SCAN_PATH }} --policy "${{ inputs.POLICY_IAC }}"
