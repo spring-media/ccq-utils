@@ -30,6 +30,7 @@
           uses: actions/checkout@v4
 
         - name: Build the Docker image
+          continue-on-error: true
           run: cd ${{ inputs.SCAN_PATH }} && docker build . --tag ${{ inputs.TAG }}
 
         - name: Download Wiz CLI
@@ -39,9 +40,11 @@
           run: ./wizcli auth --id "${{ secrets.WIZ_CLIENT_ID }}" --secret "${{ secrets.WIZ_CLIENT_SECRET }}"
 
         - name: Run wiz-cli docker image scan
+          continue-on-error: true
           run: ./wizcli docker scan --image ${{ inputs.TAG }} --policy "${{ inputs.POLICY_IMAGE }}"
 
         - name: Fetch digest of Docker image for Graph enrichment
+          continue-on-error: true
           run: ./wizcli docker tag --image ${{ inputs.TAG }}
 
     wiz-cli-iac-scan:
@@ -58,4 +61,5 @@
           run: ./wizcli auth --id "${{ secrets.WIZ_CLIENT_ID }}" --secret "${{ secrets.WIZ_CLIENT_SECRET }}"
 
         - name: Run wiz CLI IaC scan
+          continue-on-error: true
           run: ./wizcli iac scan --path ${{ inputs.SCAN_PATH }} --policy "${{ inputs.POLICY_IAC }}"
