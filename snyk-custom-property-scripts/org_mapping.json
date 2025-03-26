@@ -33,7 +33,9 @@
     "Immersive Media": {"org_id": "3514cab1-83b3-4bf9-a46b-0e45d17c4fd5", "integration_id": "405d6972-146a-4754-a060-f33e58ffb372"},
     "Apps Edition (extern)": {"org_id": "827a983a-4a8c-486e-956a-3c2ba75fb598", "integration_id": "60cb72e8-a627-4eff-bd02-67e046275c1f"},
     "Q-Team": {"org_id": "ae8995ba-6061-4685-abae-d3ad414fd280", "integration_id": "f01e052f-5408-42c1-87b8-a2755fa4afa3"},
-    "CIS (Cloud Infrastructure Services)": {"org_id": "8e4e22dd-e273-4072-996b-208abfccdb22", "integration_id": "e2453944-a3b8-4c24-bb26-9b6d843f961a"},
+    "Maps": {"org_id": "8e4e22dd-e273-4072-996b-208abfccdb22", "integration_id": "e2453944-a3b8-4c24-bb26-9b6d843f961a"},
     "OTT Live": {"org_id": "133effc0-1c8c-47a4-9483-78ca852b12af", "integration_id": "364373f2-fcf7-456e-80c8-024bbfc35fc5"},
-    "OTT On-Demand": {"org_id": "032137db-8cb5-418c-99de-5c1036ca95ca", "integration_id": "e133c0d2-a127-4306-a4a3-d242cdfb7832"}
+    "OTT On-Demand": {"org_id": "032137db-8cb5-418c-99de-5c1036ca95ca", "integration_id": "e133c0d2-a127-4306-a4a3-d242cdfb7832"},
+    "Engineering Standardisation": {"org_id": "e635f64a-e219-4b94-bbab-6d29e9418a97", "integration_id": "1d8506c1-9820-4ec1-a530-7a6d3a433777"},
+    "Audio Team": {"org_id": "17e2fdf0-254f-46f4-b589-c77f404541ac", "integration_id": "fc963361-a23c-4d9e-a653-a659a7fb582f"}
 }
