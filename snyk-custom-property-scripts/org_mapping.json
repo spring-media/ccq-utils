@@ -37,5 +37,14 @@
     "OTT Live": {"org_id": "133effc0-1c8c-47a4-9483-78ca852b12af", "integration_id": "364373f2-fcf7-456e-80c8-024bbfc35fc5"},
     "OTT On-Demand": {"org_id": "032137db-8cb5-418c-99de-5c1036ca95ca", "integration_id": "e133c0d2-a127-4306-a4a3-d242cdfb7832"},
     "Engineering Standardisation": {"org_id": "e635f64a-e219-4b94-bbab-6d29e9418a97", "integration_id": "1d8506c1-9820-4ec1-a530-7a6d3a433777"},
-    "Audio Team": {"org_id": "17e2fdf0-254f-46f4-b589-c77f404541ac", "integration_id": "fc963361-a23c-4d9e-a653-a659a7fb582f"}
+    "Audio Team": {"org_id": "17e2fdf0-254f-46f4-b589-c77f404541ac", "integration_id": "fc963361-a23c-4d9e-a653-a659a7fb582f"},
+    "Data Foundation": {"org_id": "555025e6-e297-4775-8e5e-a84a22546e45", "integration_id": "c79f5799-6af8-4c0f-8222-ffc305e35321"},
+    "CMS Foundation": {"org_id": "1dab5510-9dd4-4134-9afa-8dcbf82f762e", "integration_id": "611f8168-0dde-473f-a465-a7ac44f59f72"},
+    "Tracking Platform & Performance Insights": {"org_id": "cff3a676-97c2-430b-b09d-31ec69997dd9", "integration_id": "cce955e5-24e0-4757-9a48-90db4db8c9fb"},
+    "Subscription Insights": {"org_id": "c87cbe08-d156-4520-9972-a822dac2375d", "integration_id": "49d5bf34-5d06-45a0-b13a-7e96f828ab50"},
+    "Advertising Insights": {"org_id": "3a9eff73-c295-496e-ba98-af7fd87664af", "integration_id": "66eef8e6-3964-444b-95be-0028f1d184c2"},
+    "Content Discovery": {"org_id": "ee1ad505-9bc8-40be-93d1-5bdc3791b7e1", "integration_id": "446ebaa5-1ef5-47d2-8304-1f5d48504a5d"},
+    "Content Distribution": {"org_id": "bcf8e0f3-f020-4613-9166-9dee9f8056ed", "integration_id": "22affb45-f417-4608-aedc-9d2f97968ee8"},
+    "Newsroom Services & Tooling": {"org_id": "574481a7-419a-461c-ac0f-462bca6b4c5d", "integration_id": "bb514109-0ee3-4f99-b08f-cf3eb92b8587"},
+    "Video & Audio": {"org_id": "84c95cfd-b92e-4bbb-9574-d1e1982b1f02", "integration_id": "cffd9d9e-f6ab-47a5-a221-ca0a1e0fcaa6"}
 }
